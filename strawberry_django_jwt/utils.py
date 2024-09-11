@@ -16,7 +16,13 @@ from graphql import GraphQLResolveInfo
 import jwt
 from packaging.version import parse as parse_ver
 from strawberry.annotation import StrawberryAnnotation  # type: ignore
-from strawberry.types.arguments import StrawberryArgument
+from typing import TYPE_CHECKING, Any, Optional, cast
+
+try:
+    from strawberry.arguments import StrawberryArgument
+except ImportError:
+    from strawberry.types.arguments import StrawberryArgument
+
 from strawberry.django.context import StrawberryDjangoContext
 from strawberry.types import Info
 
